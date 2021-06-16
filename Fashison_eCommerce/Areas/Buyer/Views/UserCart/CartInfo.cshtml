@@ -1,0 +1,11 @@
+﻿@{string count = Html.Action("CountCartItem", "UserCart").ToString().Replace("\r\n","");
+
+    if ( count != "0")
+    {
+        <p>@count Items in your cart <span class="badge badge-warning pull-right" style="margin-top:5px;">@{Html.RenderAction("TotalCost", "UserCart");}</span></p>
+    }
+    else
+    {
+        <p> Your cart is empty </p>
+    }
+}

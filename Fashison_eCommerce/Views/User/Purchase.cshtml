@@ -1,0 +1,51 @@
+﻿
+@{
+    ViewBag.Title = "Purchase";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+@using Fashison_eCommerce.Controllers;
+@{Html.RenderPartial("Sidebar", "User");}
+
+<div style=" float: right; background-color: white; height: 100%; max-width: 850px; width: 100%;">
+    <div style="width: 800px!important; max-height: 30px; display: contents; margin-left: 5px; margin-bottom: 10px;">
+        <h4 style="margin-left: 5px;">My orders</h4>
+    </div>
+
+    <div style="height: 100%; max-width: 300px; display: contents;">
+        <table id="purchase" class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">Order ID</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Product</th>
+                    <th scope="col">Total</th>
+                    <th scope="col">Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    var info = System.Globalization.CultureInfo.GetCultureInfo("vi-VN");
+                    foreach (var order in ViewBag.OrdersList)
+                    {
+                        var temp = ((UserController)this.ViewContext.Controller).ConvertToStatus(order.status);
+                        <tr>
+                            <th scope="row"><a href="/User/PurchaseDetail?Order_id=@order.Order_ID">@order.Order_ID</a></th>
+                            <td>@order.created_date</td>
+                            <td>@order.decription</td>
+                            <td>@String.Format(info, "{0:C0}", order.Total_Order)</td>
+                            <td>@temp </td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        $('#purchase').DataTable({
+            order: [[1, 'desc']]
+        });
+    });
+</script>
+

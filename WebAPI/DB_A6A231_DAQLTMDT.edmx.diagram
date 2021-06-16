@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="91e0ed402ebe4f04ac883747d3071442" Name="Diagram1">
+        <EntityTypeShape EntityType="BMWebModel.Account" Width="1.5" PointX="5.75" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BMWebModel.Address" Width="1.5" PointX="5.25" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BMWebModel.Authorize" Width="1.5" PointX="3" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BMWebModel.Brand" Width="1.5" PointX="5.25" PointY="18.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BMWebModel.Cart" Width="1.5" PointX="5.25" PointY="11.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BMWebModel.Cart_Item" Width="1.5" PointX="10.5" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BMWebModel.Category" Width="1.5" PointX="12.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="BMWebModel.Image" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BMWebModel.Main_Type" Width="1.5" PointX="3" PointY="20.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BMWebModel.Order_Items" Width="1.5" PointX="12.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BMWebModel.Order_Tracking" Width="1.5" PointX="12.75" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BMWebModel.Order" Width="1.5" PointX="7.5" PointY="10.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BMWebModel.Permission" Width="1.5" PointX="0.75" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="BMWebModel.Product" Width="1.5" PointX="7.5" PointY="15.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BMWebModel.Product_Type" Width="1.5" PointX="5.25" PointY="20.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BMWebModel.PurchaseOrder" Width="1.5" PointX="8" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="BMWebModel.PurchaseOrderDetail" Width="1.5" PointX="10.25" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BMWebModel.Rating" Width="1.5" PointX="9.75" PointY="16.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BMWebModel.Role" Width="1.5" PointX="0.75" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BMWebModel.Shipper" Width="1.5" PointX="10.25" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BMWebModel.Store" Width="1.5" PointX="5.25" PointY="14" IsExpanded="true" />
+        <EntityTypeShape EntityType="BMWebModel.SubCategory" Width="1.5" PointX="15" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BMWebModel.sysdiagram" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BMWebModel.User" Width="1.5" PointX="3" PointY="10.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BMWebModel.AccountRole" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BMWebModel.Buyer_LoadAllProduct" Width="1.5" PointX="9.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BMWebModel.Buyer_LoadProduct" Width="1.5" PointX="12.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BMWebModel.Order_All" Width="1.5" PointX="14.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BMWebModel.Order_Cancel" Width="1.5" PointX="14.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BMWebModel.Order_Confirm" Width="1.5" PointX="14.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BMWebModel.Order_Delivered" Width="1.5" PointX="0.75" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BMWebModel.Order_Delivering" Width="1.5" PointX="14.75" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BMWebModel.Order_Receive" Width="1.5" PointX="16.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BMWebModel.OV_OrderView" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BMWebModel.SV_initOrderList" Width="1.5" PointX="16.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BMWebModel.SV_pickupList" Width="1.5" PointX="16.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BMWebModel.SV_shipperList" Width="1.5" PointX="16.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BMWebModel.SV_shippingList" Width="1.5" PointX="11.75" PointY="17.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BMWebModel.view_Buyer_Order_Items" Width="1.5" PointX="18.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BMWebModel.view_Buyer_Orders" Width="1.5" PointX="18.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BMWebModel.view_MainType" Width="1.5" PointX="11.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BMWebModel.view_Product" Width="1.5" PointX="18.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BMWebModel.view_Products" Width="1.5" PointX="18.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BMWebModel.view_Shop" Width="1.5" PointX="18.75" PointY="15.75" IsExpanded="true" />
+        <AssociationConnector Association="BMWebModel.FK_PURCHASEORDER_ACCOUNT" ManuallyRouted="false" />
+        <AssociationConnector Association="BMWebModel.FK__Address__User_ID__31B762FC" ManuallyRouted="false" />
+        <AssociationConnector Association="BMWebModel.FK__Orders__Address___55009F39" ManuallyRouted="false" />
+        <AssociationConnector Association="BMWebModel.FK__Authorize__Permi__534D60F1" ManuallyRouted="false" />
+        <AssociationConnector Association="BMWebModel.FK__Authorize__RoleI__5165187F" ManuallyRouted="false" />
+        <AssociationConnector Association="BMWebModel.FK" ManuallyRouted="false" />
+        <AssociationConnector Association="BMWebModel.FK__Cart__UserID__5535A963" ManuallyRouted="false" />
+        <AssociationConnector Association="BMWebModel.FK__Cart_Item__Cart___47A6A41B" ManuallyRouted="false" />
+        <AssociationConnector Association="BMWebModel.FK__Cart_Item__ItemI__46B27FE2" ManuallyRouted="false" />
+        <AssociationConnector Association="BMWebModel.FK_SUBCATEGORY_CATEGORY" ManuallyRouted="false" />
+        <AssociationConnector Association="BMWebModel.FK__Product_T__Maint__2180FB33" ManuallyRouted="false" />
+        <AssociationConnector Association="BMWebModel.FK__Order_Ite__Item___57DD0BE4" ManuallyRouted="false" />
+        <AssociationConnector Association="BMWebModel.FK__Order_Ite__Order__56E8E7AB" ManuallyRouted="false" />
+        <AssociationConnector Association="BMWebModel.FK__Order_Tra__Order__084B3915" ManuallyRouted="false" />
+        <AssociationConnector Association="BMWebModel.FK__Order_Tra__Shipp__093F5D4E" ManuallyRouted="false" />
+        <AssociationConnector Association="BMWebModel.FK__Orders__Store_ID__540C7B00" ManuallyRouted="false" />
+        <AssociationConnector Association="BMWebModel.FK__Orders__User_ID__531856C7" ManuallyRouted="false" />
+        <AssociationConnector Association="BMWebModel.FK__Product__Store_I__2F10007B" ManuallyRouted="false" />
+        <AssociationConnector Association="BMWebModel.FK__Product__TypeID__2E1BDC42" ManuallyRouted="false" />
+        <AssociationConnector Association="BMWebModel.FK__Rating__ProductI__6FE99F9F" ManuallyRouted="false" />
+        <AssociationConnector Association="BMWebModel.FK__Shipper__Purchas__5CD6CB2B" ManuallyRouted="false" />
+        <AssociationConnector Association="BMWebModel.FK_PURCHASEORDERDETAIL_PURCHCASEORDER" ManuallyRouted="false" />
+        <AssociationConnector Association="BMWebModel.FK__Users__RoleID__52593CB8" ManuallyRouted="false" />
+        <AssociationConnector Association="BMWebModel.FK__Store__UserID__29572725" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

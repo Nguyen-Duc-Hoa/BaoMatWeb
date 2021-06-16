@@ -1,0 +1,5 @@
+﻿@{
+    var info = System.Globalization.CultureInfo.GetCultureInfo("vi-VN"); }
+
+@*@ViewBag.total*@
+@String.Format(info, "{0:C0}", ViewBag.total)

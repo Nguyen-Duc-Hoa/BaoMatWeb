@@ -40,6 +40,7 @@ namespace Fashison_eCommerce.Areas.Admin.Controllers
             return RedirectToAction("Index");
         }
         
+        [AuthorizeAdminController]
         public ActionResult Details(int id)
         {
             User user = new User();

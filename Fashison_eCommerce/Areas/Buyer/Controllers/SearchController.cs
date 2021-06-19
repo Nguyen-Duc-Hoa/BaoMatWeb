@@ -10,23 +10,40 @@ namespace Fashison_eCommerce.Areas.Buyer.Controllers
     public class SearchController : Controller
     {
         // GET: Buyer/Search
-        public ActionResult Index()
-        
+        //[ValidateAntiForgeryToken]
+        public ActionResult Index() 
         {
-            string name = Request.Form["name"];
-            int id = Convert.ToInt32(Request.Form["mainType"]);
+            try
+            {
+                string name = Request.Form["name"];
+                int id = Convert.ToInt32(Request.Form["mainType"]);
 
-            Search(name, id);
-            return View();
+                Search(name, id);
+                return View();
+            }
+            catch
+            {
+                return Redirect("/");
+            }
+            
         }
 
         public ActionResult Search(string name, int typeid)
         {
             //if (name != null && typeid != 0)
             //{
-                ProductClient PC = new ProductClient();
-                ViewBag.Product = PC.search(typeid, name);
+            ProductClient PC = new ProductClient();
+            ViewBag.Product = PC.search(typeid, name);
+            try
+            {
                 ViewBag.Count = PC.search(typeid, name).Count();
+            }
+            catch
+            {
+                ViewBag.Count = 0;
+                return Redirect("/");
+            }
+                
             //    return View();
             //}
             return View();

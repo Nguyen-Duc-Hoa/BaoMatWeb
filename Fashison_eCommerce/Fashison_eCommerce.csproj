@@ -217,6 +217,7 @@
     <Compile Include="Models\Authorize.cs">
       <DependentUpon>BMWeb.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\AuthorizeAdminController.cs" />
     <Compile Include="Models\AuthorizeController.cs" />
     <Compile Include="Models\AuthorizeShipper.cs" />
     <Compile Include="Models\BMWeb.Context.cs">
@@ -378,6 +379,12 @@
     <Compile Include="Models\sp_getUserAddress_Result.cs">
       <DependentUpon>BMWeb.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>BMWeb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_helpdiagrams_Result.cs">
+      <DependentUpon>BMWeb.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\sp_ListProductOfShop_Result.cs">
       <DependentUpon>BMWeb.tt</DependentUpon>
     </Compile>
@@ -425,6 +432,9 @@
       <DependentUpon>BMWeb.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sysdiagram.cs">
+      <DependentUpon>BMWeb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TimeOut.cs">
       <DependentUpon>BMWeb.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\User.cs">
@@ -7531,6 +7541,7 @@
     <Folder Include="Data\" />
     <Folder Include="images\" />
     <Folder Include="Styles_css\User_styles\themes\less\oregional\" />
+    <Folder Include="Views\AuthorizeAdmin\" />
     <Folder Include="Views\MainType\" />
   </ItemGroup>
   <ItemGroup>

@@ -14,6 +14,11 @@ namespace Fashison_eCommerce.Areas.Buyer.Controllers
         [Route("")]
         public ActionResult Index()
         {
+
+            //DateTime date1 = new DateTime(1996, 6, 3, 1, 0, 0);
+            //DateTime date2 = new DateTime(1996, 6, 3, 2, 0, 0);
+
+            //TimeSpan time = date2.Subtract(date1);
             return View();
         }
         public ActionResult LoadProducts()

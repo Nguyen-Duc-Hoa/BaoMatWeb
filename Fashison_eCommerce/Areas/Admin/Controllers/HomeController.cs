@@ -30,6 +30,7 @@ namespace Fashison_eCommerce.Areas.Admin.Controllers
                 var x = db.CheckAdminLogin(objUser.Email, objUser.Password).FirstOrDefault();
                 if(true)
                 {
+                    Session["userID"] = id.ToString();
                     Session["Email"] = objUser.Email.ToString();
                     Session["Name"] = user.Name.ToString();
                     Session["Password"] = objUser.Password.ToString();
@@ -40,6 +41,7 @@ namespace Fashison_eCommerce.Areas.Admin.Controllers
             return View(objUser);
         }
 
+        [AuthorizeAdminController]
         public ActionResult Index()
         {
             if (Session["Email"] != null)

@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="2975a3c2068c48fc83eace16b02d9645" Name="Diagram1">
+      <Diagram DiagramId="03409dfc8b134b278da6c79aac17f713" Name="Diagram1">
         <EntityTypeShape EntityType="BMWebModel.Account" Width="1.5" PointX="5.75" PointY="1.75" IsExpanded="true" />
         <EntityTypeShape EntityType="BMWebModel.Address" Width="1.5" PointX="5.25" PointY="8.125" IsExpanded="true" />
         <EntityTypeShape EntityType="BMWebModel.Authorize" Width="1.5" PointX="3" PointY="6.875" IsExpanded="true" />

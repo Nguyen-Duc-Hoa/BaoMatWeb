@@ -340,6 +340,12 @@
     <Compile Include="sp_getUserAddress_Result.cs">
       <DependentUpon>BMWeb.tt</DependentUpon>
     </Compile>
+    <Compile Include="sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>BMWeb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_helpdiagrams_Result.cs">
+      <DependentUpon>BMWeb.tt</DependentUpon>
+    </Compile>
     <Compile Include="sp_ListProductOfShop_Result.cs">
       <DependentUpon>BMWeb.tt</DependentUpon>
     </Compile>

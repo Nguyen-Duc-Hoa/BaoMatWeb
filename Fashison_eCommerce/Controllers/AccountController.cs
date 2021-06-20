@@ -39,7 +39,7 @@ namespace Fashison_eCommerce.Controllers
             return View();
         }
 
-        [HttpGet] // di toi trang login
+        
         public ActionResult Login()
         {
             if (Request.Cookies["email"] != null && Request.Cookies["pass"] != null)
@@ -59,6 +59,7 @@ namespace Fashison_eCommerce.Controllers
         }
 
         [HttpPost]// thuc hien dang nhap
+        [ValidateAntiForgeryToken]
         public ActionResult VerifyLogin(User user)
         {
 
@@ -140,6 +141,7 @@ namespace Fashison_eCommerce.Controllers
             return View();
         }
         [HttpPost] // thuc hien dang ki
+        [ValidateAntiForgeryToken]
         public ActionResult RegisterUser(User user)
         {
             // kiem tra du lieu nhap
@@ -193,6 +195,7 @@ namespace Fashison_eCommerce.Controllers
             return View();
         }
         [HttpPost]  
+        [ValidateAntiForgeryToken]
         public ActionResult VerifyByEmail()// gui email co kem ma xac nhan cho user
         {
             string user_email = Request["email"];

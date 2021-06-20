@@ -24,6 +24,7 @@
     <!-- content -->
     <div class="sub-main-w3">
         <form action="/Account/VerifyLogin" method="post">
+            @Html.AntiForgeryToken()
             <div class="form-style-agile">
                 <label>
                     Email

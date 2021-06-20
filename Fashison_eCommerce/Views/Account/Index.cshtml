@@ -6,11 +6,14 @@
 
 <h2>Index</h2>
 <form action="/Account/Login" method="get">
+    @Html.AntiForgeryToken()
     <button type="submit">
         Login
     </button>
 </form>
+
 <form action="/Products" method="get">
+    @Html.AntiForgeryToken()
     <button type="submit">
         Product
     </button>

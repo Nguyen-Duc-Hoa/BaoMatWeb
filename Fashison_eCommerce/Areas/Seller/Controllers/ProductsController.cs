@@ -118,15 +118,41 @@ namespace Fashison_eCommerce.Areas.Seller.Controllers
             //HttpPostedFileBase file = Request.Files[0];
             if (ModelState.IsValid)
             {
-
-                if (file != null)
+                if (file == null)
                 {
-                    string ImageName = Path.GetFileName(file.FileName);
-                    string physicalPath = Server.MapPath("~/Product_Images/" + ImageName);
+                    ModelState.AddModelError("File", "Please Upload your file");
+                }
+                else
+                {
+                    string fileName = file.FileName; // getting File Name
 
-                    // save image in folder
-                    file.SaveAs(physicalPath);
-                    cvm.product.Pictures = ImageName;
+                    string fileContentType = file.ContentType; // getting ContentType
+
+                    byte[] tempFileBytes = new byte[file.ContentLength]; // getting filebytes
+
+                    var data = file.InputStream.Read(tempFileBytes, 0, Convert.ToInt32(file.ContentLength));
+
+                    var types = FileUploadCheck.FileType.Image;  // Setting Image type
+
+                    var result = FileUploadCheck.isValidFile(tempFileBytes, types, fileContentType); // Validate Header
+
+                    if (result == true)
+                    {
+                        int FileLength = 1024 * 1024 * 2; //FileLength 2 MB
+                        if (file.ContentLength > FileLength)
+                        {
+                            ModelState.AddModelError("File", "Maximum allowed size is: " + FileLength + " MB");
+                        }
+                        else
+                        {
+                            string ImageName = Path.GetFileName(file.FileName);
+                            string physicalPath = Server.MapPath("~/Product_Images/" + ImageName);
+
+                            // save image in folder
+                            file.SaveAs(physicalPath);
+                            cvm.product.Pictures = ImageName;
+                        }
+                    }
                 }
                 ProductsClient CC = new ProductsClient();
                 int Storeid = CC.Storeid(Convert.ToInt32(Session["userID"]));

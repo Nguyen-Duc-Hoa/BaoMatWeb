@@ -270,6 +270,7 @@
     <Compile Include="Models\DetailOrder_Result.cs">
       <DependentUpon>BMWeb.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\FileUploadCheck.cs" />
     <Compile Include="Models\Find.cs" />
     <Compile Include="Models\FindProducts_Result.cs">
       <DependentUpon>BMWeb.tt</DependentUpon>
@@ -6347,6 +6348,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\PagedList.css" />
+    <Content Include="Error\Error.html" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\fa-brands-400.svg" />
     <Content Include="fonts\fa-regular-400.svg" />

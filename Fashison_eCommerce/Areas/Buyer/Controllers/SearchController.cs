@@ -10,8 +10,10 @@ namespace Fashison_eCommerce.Areas.Buyer.Controllers
     public class SearchController : Controller
     {
         // GET: Buyer/Search
-        //[ValidateAntiForgeryToken]
-        public ActionResult Index() 
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Index()
         {
             try
             {
@@ -27,7 +29,7 @@ namespace Fashison_eCommerce.Areas.Buyer.Controllers
             }
             
         }
-
+        
         public ActionResult Search(string name, int typeid)
         {
             //if (name != null && typeid != 0)

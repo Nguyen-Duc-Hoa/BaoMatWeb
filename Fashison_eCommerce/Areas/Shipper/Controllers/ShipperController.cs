@@ -51,6 +51,7 @@ namespace Fashison_eCommerce.Areas.Shipper.Controllers
         }
 
         [HttpPost]// thuc hien dang nhap
+        [ValidateAntiForgeryToken]
         public ActionResult VerifyLogin(User user)
         {
 

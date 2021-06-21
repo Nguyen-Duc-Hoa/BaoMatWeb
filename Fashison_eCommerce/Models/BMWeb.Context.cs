@@ -50,6 +50,7 @@ namespace Fashison_eCommerce.Models
         public virtual DbSet<Store> Stores { get; set; }
         public virtual DbSet<SubCategory> SubCategories { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
+        public virtual DbSet<TimeOut> TimeOuts { get; set; }
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<AccountRole> AccountRoles { get; set; }
         public virtual DbSet<Buyer_LoadAllProduct> Buyer_LoadAllProduct { get; set; }
@@ -72,7 +73,6 @@ namespace Fashison_eCommerce.Models
         public virtual DbSet<view_Product> view_Product { get; set; }
         public virtual DbSet<view_Products> view_Products { get; set; }
         public virtual DbSet<view_Shop> view_Shop { get; set; }
-        public virtual DbSet<TimeOut> TimeOuts { get; set; }
     
         [DbFunction("DB_A6A231_DAQLTMDTEntities", "CheckAdminLogin")]
         public virtual IQueryable<CheckAdminLogin_Result> CheckAdminLogin(string email, string password)

@@ -209,8 +209,11 @@ namespace Fashison_eCommerce.Controllers
                             Response.Write("<script>alert('Invalid Email or Password')</script>");
 
                             Response.Write("<script>alert('You have " + (2 - Number) + " time left to login')</script>");
-
-                            Response.Write("<script>alert('Your account is locked for 15 minutes!!!')</script>");
+                            if(2 - -Number == 0)
+                            {
+                                Response.Write("<script>alert('Your account is locked for 15 minutes!!!')</script>");
+                            }
+                           
                             //email chinh xac nhung mat khau khong chinh xac
                             //Cap nhat time out Number++
                             PasswordFail(user.Email);

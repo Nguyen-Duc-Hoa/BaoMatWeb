@@ -249,6 +249,16 @@ warning 6002: The table/view 'BMWeb.dbo.AccountRole' does not have a primary key
           <Property Name="version" Type="int" />
           <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
+        <EntityType Name="TimeOut">
+          <Key>
+            <PropertyRef Name="Email" />
+          </Key>
+          <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Number" Type="int" />
+          <Property Name="Ftime" Type="datetime" />
+          <Property Name="Ltime" Type="datetime" />
+          <Property Name="Status" Type="int" />
+        </EntityType>
         <EntityType Name="Users">
           <Key>
             <PropertyRef Name="Id" />
@@ -264,6 +274,7 @@ warning 6002: The table/view 'BMWeb.dbo.AccountRole' does not have a primary key
           <Property Name="Birthday" Type="date" />
           <Property Name="RoleID" Type="int" />
           <Property Name="Avatar" Type="nvarchar" MaxLength="100" />
+          <Property Name="status" Type="int" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'BMWeb.dbo.Buyer_LoadAllProduct' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -834,6 +845,9 @@ warning 6002: The table/view 'BMWeb.dbo.view_Shop' does not have a primary key d
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <!--Errors Found During Generation:
+warning 6035: The relationship 'FK__TimeOut__Email__1387E197' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
+        <Association Name="FK__TimeOut__Email__1387E197" />-->
         <Association Name="FK__Users__RoleID__52593CB8">
           <End Role="Role" Type="Self.Role" Multiplicity="0..1" />
           <End Role="Users" Type="Self.Users" Multiplicity="*" />
@@ -1183,6 +1197,7 @@ warning 6035: The relationship 'FK_EMAIL_ACCOUNT' has columns that are not part 
           <EntitySet Name="Store" EntityType="Self.Store" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SubCategory" EntityType="Self.SubCategory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TimeOut" EntityType="Self.TimeOut" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AccountRole" EntityType="Self.AccountRole" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -1828,6 +1843,16 @@ warning 6035: The relationship 'FK_EMAIL_ACCOUNT' has columns that are not part 
           <Property Name="version" Type="Int32" />
           <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
+        <EntityType Name="TimeOut">
+          <Key>
+            <PropertyRef Name="Email" />
+          </Key>
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Number" Type="Int32" />
+          <Property Name="Ftime" Type="DateTime" Precision="3" />
+          <Property Name="Ltime" Type="DateTime" Precision="3" />
+          <Property Name="Status" Type="Int32" />
+        </EntityType>
         <EntityType Name="User">
           <Key>
             <PropertyRef Name="Id" />
@@ -1843,6 +1868,7 @@ warning 6035: The relationship 'FK_EMAIL_ACCOUNT' has columns that are not part 
           <Property Name="Birthday" Type="DateTime" Precision="0" />
           <Property Name="RoleID" Type="Int32" />
           <Property Name="Avatar" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="status" Type="Int32" />
           <NavigationProperty Name="Addresses" Relationship="Self.FK__Address__User_ID__31B762FC" FromRole="Users" ToRole="Address" />
           <NavigationProperty Name="Carts" Relationship="Self.FK__Cart__UserID__5535A963" FromRole="Users" ToRole="Cart" />
           <NavigationProperty Name="Order_Tracking" Relationship="Self.FK__Order_Tra__Shipp__093F5D4E" FromRole="Users" ToRole="Order_Tracking" />
@@ -2459,6 +2485,7 @@ warning 6035: The relationship 'FK_EMAIL_ACCOUNT' has columns that are not part 
           <EntitySet Name="Stores" EntityType="Self.Store" />
           <EntitySet Name="SubCategories" EntityType="Self.SubCategory" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="TimeOuts" EntityType="Self.TimeOut" />
           <EntitySet Name="Users" EntityType="Self.User" />
           <EntitySet Name="AccountRoles" EntityType="Self.AccountRole" />
           <EntitySet Name="Buyer_LoadAllProduct" EntityType="Self.Buyer_LoadAllProduct" />
@@ -2848,6 +2875,7 @@ warning 6035: The relationship 'FK_EMAIL_ACCOUNT' has columns that are not part 
           <Property Type="DateTime" Name="Birthday" Nullable="true" />
           <Property Type="Int32" Name="RoleID" Nullable="true" />
           <Property Type="String" Name="Avatar" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="status" Nullable="true" />
         </ComplexType>
         <ComplexType Name="ReportForAdmin_Result">
           <Property Type="Double" Name="Total" Nullable="true" />
@@ -2946,6 +2974,7 @@ warning 6035: The relationship 'FK_EMAIL_ACCOUNT' has columns that are not part 
           <Property Type="DateTime" Name="Birthday" Nullable="true" />
           <Property Type="Int32" Name="RoleID" Nullable="true" />
           <Property Type="String" Name="Avatar" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="status" Nullable="true" />
         </ComplexType>
         <ComplexType Name="sp_ProductByStore_Result">
           <Property Type="Int32" Name="Product_ID" Nullable="false" />
@@ -3260,6 +3289,17 @@ warning 6035: The relationship 'FK_EMAIL_ACCOUNT' has columns that are not part 
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="TimeOuts">
+            <EntityTypeMapping TypeName="BMWebModel.TimeOut">
+              <MappingFragment StoreEntitySet="TimeOut">
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Number" ColumnName="Number" />
+                <ScalarProperty Name="Ftime" ColumnName="Ftime" />
+                <ScalarProperty Name="Ltime" ColumnName="Ltime" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Users">
             <EntityTypeMapping TypeName="BMWebModel.User">
               <MappingFragment StoreEntitySet="Users">
@@ -3274,6 +3314,7 @@ warning 6035: The relationship 'FK_EMAIL_ACCOUNT' has columns that are not part 
                 <ScalarProperty Name="Birthday" ColumnName="Birthday" />
                 <ScalarProperty Name="RoleID" ColumnName="RoleID" />
                 <ScalarProperty Name="Avatar" ColumnName="Avatar" />
+                <ScalarProperty Name="status" ColumnName="status" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -3715,6 +3756,7 @@ warning 6035: The relationship 'FK_EMAIL_ACCOUNT' has columns that are not part 
                 <ScalarProperty Name="Birthday" ColumnName="Birthday" />
                 <ScalarProperty Name="RoleID" ColumnName="RoleID" />
                 <ScalarProperty Name="Avatar" ColumnName="Avatar" />
+                <ScalarProperty Name="status" ColumnName="status" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -3866,6 +3908,7 @@ warning 6035: The relationship 'FK_EMAIL_ACCOUNT' has columns that are not part 
                 <ScalarProperty Name="Birthday" ColumnName="Birthday" />
                 <ScalarProperty Name="RoleID" ColumnName="RoleID" />
                 <ScalarProperty Name="Avatar" ColumnName="Avatar" />
+                <ScalarProperty Name="status" ColumnName="status" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

@@ -24,5 +24,6 @@ namespace WebAPI
         public Nullable<System.DateTime> Birthday { get; set; }
         public Nullable<int> RoleID { get; set; }
         public string Avatar { get; set; }
+        public Nullable<int> status { get; set; }
     }
 }

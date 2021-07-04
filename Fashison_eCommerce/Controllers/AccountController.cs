@@ -1,16 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Facebook;
+using Fashison_eCommerce.Models;
+using System;
 using System.Configuration;
-using System.Data.Entity.Validation;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Net;
 using System.Net.Mail;
-using System.Web;
 using System.Web.Mvc;
-using System.Web.UI.WebControls;
-using Facebook;
-using Fashison_eCommerce.Models;
 
 
 namespace Fashison_eCommerce.Controllers
@@ -209,7 +205,7 @@ namespace Fashison_eCommerce.Controllers
                             Response.Write("<script>alert('Invalid Email or Password')</script>");
 
                             Response.Write("<script>alert('You have " + (2 - Number) + " time left to login')</script>");
-                            if(2 - -Number == 0)
+                            if(2 - Number == 0)
                             {
                                 Response.Write("<script>alert('Your account is locked for 15 minutes!!!')</script>");
                             }
@@ -460,7 +456,7 @@ namespace Fashison_eCommerce.Controllers
         public bool testPass(string pass)
         {
 
-            if(pass.Length < 8 && pass.Length >15)
+            if(pass.Length < 8 || pass.Length >15)
             {
                 return false;
             }
@@ -578,7 +574,7 @@ namespace Fashison_eCommerce.Controllers
                         NotifyEmail(email);
                     }
                 }
-                catch { }
+                catch(Exception ex) { }
                 
 
             }
@@ -735,7 +731,7 @@ namespace Fashison_eCommerce.Controllers
                     int code = random.Next(100000, 999999);
                     ViewBag.code = code;
 
-                    message.Subject = "Security notification for \n"+ email;
+                    message.Subject = "Security notification for "+ email;
                     message.Body = "There is a device trying to sign in with this account. Have you done this?  \nPlease change your password to make your account more secure!!!" +
                         "\n\n*Note: Your account has been temporarily locked for 15 minutes.";
 

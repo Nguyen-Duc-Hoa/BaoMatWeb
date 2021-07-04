@@ -17,11 +17,13 @@ namespace Fashison_eCommerce.Areas.Shipper.Controllers
     {
         DB_A6A231_DAQLTMDTEntities db = new DB_A6A231_DAQLTMDTEntities();
         // GET: Shipper/Shipper
+        [AuthorizeShipper]
         public ActionResult Index()
         {
             return View();
         }
 
+        [AuthorizeShipper]
         public ActionResult OrderList()
         {
 
@@ -39,6 +41,7 @@ namespace Fashison_eCommerce.Areas.Shipper.Controllers
             }
         }
 
+        [AuthorizeShipper]
         public ActionResult OrderDetail(String id)
         {
             return View();

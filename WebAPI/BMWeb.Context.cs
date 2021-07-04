@@ -50,6 +50,7 @@ namespace WebAPI
         public virtual DbSet<Store> Stores { get; set; }
         public virtual DbSet<SubCategory> SubCategories { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
+        public virtual DbSet<TimeOut> TimeOuts { get; set; }
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<AccountRole> AccountRoles { get; set; }
         public virtual DbSet<Buyer_LoadAllProduct> Buyer_LoadAllProduct { get; set; }

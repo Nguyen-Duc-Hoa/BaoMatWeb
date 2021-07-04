@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="BMWebModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="BMWebModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Account">
           <Key>
             <PropertyRef Name="AccountId" />
@@ -1526,7 +1526,8 @@ warning 6035: The relationship 'FK_EMAIL_ACCOUNT' has columns that are not part 
             <End Role="SubCategory" EntitySet="SubCategory" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="BMWebModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -1842,6 +1843,16 @@ warning 6035: The relationship 'FK_EMAIL_ACCOUNT' has columns that are not part 
           <Property Name="version" Type="Int32" />
           <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
+        <EntityType Name="TimeOut">
+          <Key>
+            <PropertyRef Name="Email" />
+          </Key>
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Number" Type="Int32" />
+          <Property Name="Ftime" Type="DateTime" Precision="3" />
+          <Property Name="Ltime" Type="DateTime" Precision="3" />
+          <Property Name="Status" Type="Int32" />
+        </EntityType>
         <EntityType Name="User">
           <Key>
             <PropertyRef Name="Id" />
@@ -1857,13 +1868,13 @@ warning 6035: The relationship 'FK_EMAIL_ACCOUNT' has columns that are not part 
           <Property Name="Birthday" Type="DateTime" Precision="0" />
           <Property Name="RoleID" Type="Int32" />
           <Property Name="Avatar" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="status" Type="Int32" />
           <NavigationProperty Name="Addresses" Relationship="Self.FK__Address__User_ID__31B762FC" FromRole="Users" ToRole="Address" />
           <NavigationProperty Name="Carts" Relationship="Self.FK__Cart__UserID__5535A963" FromRole="Users" ToRole="Cart" />
           <NavigationProperty Name="Order_Tracking" Relationship="Self.FK__Order_Tra__Shipp__093F5D4E" FromRole="Users" ToRole="Order_Tracking" />
           <NavigationProperty Name="Orders" Relationship="Self.FK__Orders__User_ID__531856C7" FromRole="Users" ToRole="Orders" />
           <NavigationProperty Name="Role" Relationship="Self.FK__Users__RoleID__52593CB8" FromRole="Users" ToRole="Role" />
           <NavigationProperty Name="Stores" Relationship="Self.FK__Store__UserID__29572725" FromRole="Users" ToRole="Store" />
-          <Property Name="status" Type="Int32" />
         </EntityType>
         <EntityType Name="AccountRole">
           <Key>
@@ -2474,6 +2485,7 @@ warning 6035: The relationship 'FK_EMAIL_ACCOUNT' has columns that are not part 
           <EntitySet Name="Stores" EntityType="Self.Store" />
           <EntitySet Name="SubCategories" EntityType="Self.SubCategory" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="TimeOuts" EntityType="Self.TimeOut" />
           <EntitySet Name="Users" EntityType="Self.User" />
           <EntitySet Name="AccountRoles" EntityType="Self.AccountRole" />
           <EntitySet Name="Buyer_LoadAllProduct" EntityType="Self.Buyer_LoadAllProduct" />
@@ -2600,14 +2612,14 @@ warning 6035: The relationship 'FK_EMAIL_ACCOUNT' has columns that are not part 
           <FunctionImport Name="fn_getLatestStatus" IsComposable="true" ReturnType="Collection(BMWebModel.fn_getLatestStatus_Result)" />
           <FunctionImport Name="fn_getShipper" IsComposable="true" ReturnType="Collection(BMWebModel.fn_getShipper_Result)" />
           <FunctionImport Name="Load_User_Cart" IsComposable="true" ReturnType="Collection(BMWebModel.Load_User_Cart_Result)">
-          <Parameter Name="user_id" Mode="In" Type="Int32" />
+            <Parameter Name="user_id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="ChangeStatus">
             <Parameter Name="id" Mode="In" Type="String" />
             <Parameter Name="status" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="DetailOrder" ReturnType="Collection(BMWebModel.DetailOrder_Result)">
-          <Parameter Name="shipperid" Mode="In" Type="Int32" />
+            <Parameter Name="shipperid" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="FindProducts" ReturnType="Collection(BMWebModel.FindProducts_Result)">
             <Parameter Name="Store_ID" Mode="In" Type="Int32" />
@@ -2617,19 +2629,19 @@ warning 6035: The relationship 'FK_EMAIL_ACCOUNT' has columns that are not part 
             <Parameter Name="QualityMax" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="get_ProductByID" ReturnType="Collection(BMWebModel.get_ProductByID_Result)">
-          <Parameter Name="product_ID" Mode="In" Type="Int32" />
+            <Parameter Name="product_ID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="GetIdFromEmail" ReturnType="Collection(Int32)">
-          <Parameter Name="email" Mode="In" Type="String" />
+            <Parameter Name="email" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="getOrders_Of_User" ReturnType="Collection(BMWebModel.getOrders_Of_User_Result)">
-          <Parameter Name="userid" Mode="In" Type="Int32" />
+            <Parameter Name="userid" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="getProducts" ReturnType="Collection(BMWebModel.getProducts_Result)">
-          <Parameter Name="StoreID" Mode="In" Type="Int32" />
+            <Parameter Name="StoreID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="ListOrderDetailUser">
-          <Parameter Name="orderid" Mode="In" Type="String" />
+            <Parameter Name="orderid" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="ListOrdersUser" ReturnType="Collection(BMWebModel.ListOrdersUser_Result)">
             <Parameter Name="id" Mode="In" Type="Int32" />
@@ -2651,7 +2663,7 @@ warning 6035: The relationship 'FK_EMAIL_ACCOUNT' has columns that are not part 
           <FunctionImport Name="proc_getShipper" ReturnType="Collection(BMWebModel.proc_getShipper_Result)" />
           <FunctionImport Name="ReportForAdmin" ReturnType="Collection(BMWebModel.ReportForAdmin_Result)" />
           <FunctionImport Name="ResetPassword">
-          <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="sp_AccountChangePassword">
             <Parameter Name="email" Mode="In" Type="String" />
@@ -2669,7 +2681,7 @@ warning 6035: The relationship 'FK_EMAIL_ACCOUNT' has columns that are not part 
             <Parameter Name="definition" Mode="In" Type="Binary" />
           </FunctionImport>
           <FunctionImport Name="sp_ConfirmProduct_Admin">
-          <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="sp_creatediagram">
             <Parameter Name="diagramname" Mode="In" Type="String" />
@@ -2692,16 +2704,16 @@ warning 6035: The relationship 'FK_EMAIL_ACCOUNT' has columns that are not part 
             <Parameter Name="Avatar" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_getAddressByID" ReturnType="Collection(BMWebModel.sp_getAddressByID_Result)">
-          <Parameter Name="addressID" Mode="In" Type="Int32" />
+            <Parameter Name="addressID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="sp_GetCartItem" ReturnType="Collection(BMWebModel.sp_GetCartItem_Result)">
-          <Parameter Name="CartID" Mode="In" Type="Int32" />
+            <Parameter Name="CartID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="sp_getOrderDetail" ReturnType="Collection(BMWebModel.sp_getOrderDetail_Result)">
-          <Parameter Name="order_id" Mode="In" Type="String" />
+            <Parameter Name="order_id" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_getUserAddress" ReturnType="Collection(BMWebModel.sp_getUserAddress_Result)">
-          <Parameter Name="user_id" Mode="In" Type="Int32" />
+            <Parameter Name="user_id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(BMWebModel.sp_helpdiagramdefinition_Result)">
             <Parameter Name="diagramname" Mode="In" Type="String" />
@@ -2712,26 +2724,26 @@ warning 6035: The relationship 'FK_EMAIL_ACCOUNT' has columns that are not part 
             <Parameter Name="owner_id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="sp_InsUserFb">
-          <Parameter Name="email" Mode="In" Type="String" />
+            <Parameter Name="email" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_ListProductOfShop" ReturnType="Collection(BMWebModel.sp_ListProductOfShop_Result)">
-          <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="sp_Load_Cart" ReturnType="Collection(BMWebModel.sp_Load_Cart_Result)">
-          <Parameter Name="user_id" Mode="In" Type="Int32" />
+            <Parameter Name="user_id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="sp_loadUserCart" ReturnType="Collection(BMWebModel.sp_loadUserCart_Result)">
-          <Parameter Name="user_id" Mode="In" Type="Int32" />
+            <Parameter Name="user_id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="sp_Login" ReturnType="Collection(BMWebModel.sp_Login_Result)">
             <Parameter Name="email" Mode="In" Type="String" />
             <Parameter Name="pass" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_ProductByStore" ReturnType="Collection(BMWebModel.sp_ProductByStore_Result)">
-          <Parameter Name="storeid" Mode="In" Type="Int32" />
+            <Parameter Name="storeid" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="sp_ProductByType" ReturnType="Collection(BMWebModel.sp_ProductByType_Result)">
-          <Parameter Name="typeid" Mode="In" Type="Int32" />
+            <Parameter Name="typeid" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="sp_renamediagram">
             <Parameter Name="diagramname" Mode="In" Type="String" />
@@ -2743,7 +2755,7 @@ warning 6035: The relationship 'FK_EMAIL_ACCOUNT' has columns that are not part 
             <Parameter Name="typeid" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="sp_Shipper_Orders" ReturnType="Collection(BMWebModel.sp_Shipper_Orders_Result)">
-          <Parameter Name="shipper_id" Mode="In" Type="Int32" />
+            <Parameter Name="shipper_id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="sp_upgraddiagrams" />
           <FunctionImport Name="Sp_User_Login" ReturnType="Collection(Boolean)">
@@ -2783,7 +2795,6 @@ warning 6035: The relationship 'FK_EMAIL_ACCOUNT' has columns that are not part 
             <Parameter Name="DayOfBirth" Mode="In" Type="DateTime" />
             <Parameter Name="Role" Mode="In" Type="String" />
           </FunctionImport>
-          <EntitySet Name="TimeOuts" EntityType="BMWebModel.TimeOut" />
         </EntityContainer>
         <ComplexType Name="DetailOrder_Result">
           <Property Type="String" Name="Order_ID" Nullable="true" MaxLength="11" />
@@ -2864,6 +2875,7 @@ warning 6035: The relationship 'FK_EMAIL_ACCOUNT' has columns that are not part 
           <Property Type="DateTime" Name="Birthday" Nullable="true" />
           <Property Type="Int32" Name="RoleID" Nullable="true" />
           <Property Type="String" Name="Avatar" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="status" Nullable="true" />
         </ComplexType>
         <ComplexType Name="ReportForAdmin_Result">
           <Property Type="Double" Name="Total" Nullable="true" />
@@ -2962,6 +2974,7 @@ warning 6035: The relationship 'FK_EMAIL_ACCOUNT' has columns that are not part 
           <Property Type="DateTime" Name="Birthday" Nullable="true" />
           <Property Type="Int32" Name="RoleID" Nullable="true" />
           <Property Type="String" Name="Avatar" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="status" Nullable="true" />
         </ComplexType>
         <ComplexType Name="sp_ProductByStore_Result">
           <Property Type="Int32" Name="Product_ID" Nullable="false" />
@@ -3017,16 +3030,6 @@ warning 6035: The relationship 'FK_EMAIL_ACCOUNT' has columns that are not part 
           <Property Type="String" Name="address" Nullable="true" MaxLength="100" />
           <Property Type="Double" Name="Total_Order" Nullable="true" />
         </ComplexType>
-        <EntityType Name="TimeOut">
-          <Key>
-            <PropertyRef Name="Email" />
-          </Key>
-          <Property Name="Email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Number" Type="Int32" />
-          <Property Name="Ftime" Type="DateTime" Precision="3" />
-          <Property Name="Ltime" Type="DateTime" Precision="3" />
-          <Property Name="Status" Type="Int32" />
-        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -3286,10 +3289,20 @@ warning 6035: The relationship 'FK_EMAIL_ACCOUNT' has columns that are not part 
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="TimeOuts">
+            <EntityTypeMapping TypeName="BMWebModel.TimeOut">
+              <MappingFragment StoreEntitySet="TimeOut">
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Number" ColumnName="Number" />
+                <ScalarProperty Name="Ftime" ColumnName="Ftime" />
+                <ScalarProperty Name="Ltime" ColumnName="Ltime" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Users">
             <EntityTypeMapping TypeName="BMWebModel.User">
               <MappingFragment StoreEntitySet="Users">
-                <ScalarProperty Name="status" ColumnName="status" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Username" ColumnName="Username" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
@@ -3301,6 +3314,7 @@ warning 6035: The relationship 'FK_EMAIL_ACCOUNT' has columns that are not part 
                 <ScalarProperty Name="Birthday" ColumnName="Birthday" />
                 <ScalarProperty Name="RoleID" ColumnName="RoleID" />
                 <ScalarProperty Name="Avatar" ColumnName="Avatar" />
+                <ScalarProperty Name="status" ColumnName="status" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -3742,6 +3756,7 @@ warning 6035: The relationship 'FK_EMAIL_ACCOUNT' has columns that are not part 
                 <ScalarProperty Name="Birthday" ColumnName="Birthday" />
                 <ScalarProperty Name="RoleID" ColumnName="RoleID" />
                 <ScalarProperty Name="Avatar" ColumnName="Avatar" />
+                <ScalarProperty Name="status" ColumnName="status" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -3893,6 +3908,7 @@ warning 6035: The relationship 'FK_EMAIL_ACCOUNT' has columns that are not part 
                 <ScalarProperty Name="Birthday" ColumnName="Birthday" />
                 <ScalarProperty Name="RoleID" ColumnName="RoleID" />
                 <ScalarProperty Name="Avatar" ColumnName="Avatar" />
+                <ScalarProperty Name="status" ColumnName="status" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -3976,17 +3992,6 @@ warning 6035: The relationship 'FK_EMAIL_ACCOUNT' has columns that are not part 
           <FunctionImportMapping FunctionImportName="USP_CapNhatUser" FunctionName="BMWebModel.Store.USP_CapNhatUser" />
           <FunctionImportMapping FunctionImportName="USP_DangKy" FunctionName="BMWebModel.Store.USP_DangKy" />
           <FunctionImportMapping FunctionImportName="USP_TaoUser" FunctionName="BMWebModel.Store.USP_TaoUser" />
-          <EntitySetMapping Name="TimeOuts">
-            <EntityTypeMapping TypeName="BMWebModel.TimeOut">
-              <MappingFragment StoreEntitySet="TimeOut">
-                <ScalarProperty Name="Status" ColumnName="Status" />
-                <ScalarProperty Name="Ltime" ColumnName="Ltime" />
-                <ScalarProperty Name="Ftime" ColumnName="Ftime" />
-                <ScalarProperty Name="Number" ColumnName="Number" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

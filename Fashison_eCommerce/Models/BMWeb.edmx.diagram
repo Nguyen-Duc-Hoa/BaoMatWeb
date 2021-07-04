@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="0a8a8643225344e6bd0196841049137c" Name="Diagram1">
+      <Diagram DiagramId="7f9ef4047281404ebbb3f43d7c9650f2" Name="Diagram1">
         <EntityTypeShape EntityType="BMWebModel.Account" Width="1.5" PointX="5.75" PointY="1.75" IsExpanded="true" />
         <EntityTypeShape EntityType="BMWebModel.Address" Width="1.5" PointX="5.25" PointY="8.125" IsExpanded="true" />
         <EntityTypeShape EntityType="BMWebModel.Authorize" Width="1.5" PointX="3" PointY="6.875" IsExpanded="true" />
@@ -28,8 +28,9 @@
         <EntityTypeShape EntityType="BMWebModel.Store" Width="1.5" PointX="5.25" PointY="14" IsExpanded="true" />
         <EntityTypeShape EntityType="BMWebModel.SubCategory" Width="1.5" PointX="15" PointY="0.875" IsExpanded="true" />
         <EntityTypeShape EntityType="BMWebModel.sysdiagram" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BMWebModel.TimeOut" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="BMWebModel.User" Width="1.5" PointX="3" PointY="10.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="BMWebModel.AccountRole" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BMWebModel.AccountRole" Width="1.5" PointX="7.75" PointY="7.75" IsExpanded="true" />
         <EntityTypeShape EntityType="BMWebModel.Buyer_LoadAllProduct" Width="1.5" PointX="9.75" PointY="7.75" IsExpanded="true" />
         <EntityTypeShape EntityType="BMWebModel.Buyer_LoadProduct" Width="1.5" PointX="12.75" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="BMWebModel.Order_All" Width="1.5" PointX="14.75" PointY="3.75" IsExpanded="true" />
@@ -38,11 +39,11 @@
         <EntityTypeShape EntityType="BMWebModel.Order_Delivered" Width="1.5" PointX="0.75" PointY="15.75" IsExpanded="true" />
         <EntityTypeShape EntityType="BMWebModel.Order_Delivering" Width="1.5" PointX="14.75" PointY="15.75" IsExpanded="true" />
         <EntityTypeShape EntityType="BMWebModel.Order_Receive" Width="1.5" PointX="16.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="BMWebModel.OV_OrderView" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="BMWebModel.SV_initOrderList" Width="1.5" PointX="16.75" PointY="7.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="BMWebModel.SV_pickupList" Width="1.5" PointX="16.75" PointY="10.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="BMWebModel.SV_shipperList" Width="1.5" PointX="16.75" PointY="14.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="BMWebModel.SV_shippingList" Width="1.5" PointX="11.75" PointY="17.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BMWebModel.OV_OrderView" Width="1.5" PointX="16.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BMWebModel.SV_initOrderList" Width="1.5" PointX="16.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BMWebModel.SV_pickupList" Width="1.5" PointX="16.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BMWebModel.SV_shipperList" Width="1.5" PointX="11.75" PointY="17.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BMWebModel.SV_shippingList" Width="1.5" PointX="16.75" PointY="17.75" IsExpanded="true" />
         <EntityTypeShape EntityType="BMWebModel.view_Buyer_Order_Items" Width="1.5" PointX="18.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="BMWebModel.view_Buyer_Orders" Width="1.5" PointX="18.75" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="BMWebModel.view_Cart" Width="1.5" PointX="18.75" PointY="8.75" IsExpanded="true" />
@@ -74,7 +75,6 @@
         <AssociationConnector Association="BMWebModel.FK_PURCHASEORDERDETAIL_PURCHCASEORDER" ManuallyRouted="false" />
         <AssociationConnector Association="BMWebModel.FK__Users__RoleID__52593CB8" ManuallyRouted="false" />
         <AssociationConnector Association="BMWebModel.FK__Store__UserID__29572725" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="BMWebModel.TimeOut" Width="1.5" PointX="16.375" PointY="19.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -394,6 +394,9 @@
     <Compile Include="sysdiagram.cs">
       <DependentUpon>BMWeb.tt</DependentUpon>
     </Compile>
+    <Compile Include="TimeOut.cs">
+      <DependentUpon>BMWeb.tt</DependentUpon>
+    </Compile>
     <Compile Include="User.cs">
       <DependentUpon>BMWeb.tt</DependentUpon>
     </Compile>

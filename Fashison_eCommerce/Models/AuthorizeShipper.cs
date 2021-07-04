@@ -17,43 +17,43 @@ namespace Fashison_eCommerce.Models
                 id = Convert.ToInt32(HttpContext.Current.Session["userID"].ToString());
             }
 
-            var tbus = db.Users.Where(x => x.Id == id).FirstOrDefault();
+            var tbus = db.Users.Where(x => x.Id == id && x.RoleID == 3).FirstOrDefault();
             //nếu session=null thì trả về trang đăng nhập
-            //if (tbus == null)
-            //{
-            //    filterContext.Result = new RedirectResult("~/Shipper/Shipper/Login");
-            //}
+            if (tbus == null)
+            {
+                filterContext.Result = new RedirectResult("~/Shipper/Shipper/Login");
+            }
             //session != null
 
-            if (tbus != null)
-            {
-                //lấy danh sách quyền của user
-                var us_quyen = db.Authorizes.Where(n => n.RoleID == tbus.RoleID);
-                //đếm số lượng quyền
-                int slquyen = us_quyen.Count();
-                //khởi tạo mảng
-                string[] listpermission = new string[slquyen];
-                int i = 0;
-                //lấy danh sách quyền đưa vào mảng
-                foreach (var item in us_quyen)
-                {
-                    listpermission[i] = item.PermissionID;
-                    i++;
+            //if (tbus != null)
+            //{
+            //    //lấy danh sách quyền của user
+            //    var us_quyen = db.Authorizes.Where(n => n.RoleID == tbus.RoleID);
+            //    //đếm số lượng quyền
+            //    int slquyen = us_quyen.Count();
+            //    //khởi tạo mảng
+            //    string[] listpermission = new string[slquyen];
+            //    int i = 0;
+            //    //lấy danh sách quyền đưa vào mảng
+            //    foreach (var item in us_quyen)
+            //    {
+            //        listpermission[i] = item.PermissionID;
+            //        i++;
 
-                    //Lấy tên controller và action
-                    //string actionName = filterContext.ActionDescriptor.ControllerDescriptor.ControllerName + "-" + filterContext.ActionDescriptor.ActionName;
+            //        //Lấy tên controller và action
+            //        //string actionName = filterContext.ActionDescriptor.ControllerDescriptor.ControllerName + "-" + filterContext.ActionDescriptor.ActionName;
 
-                    //Lấy tên Controller
-                    string ControllerName = filterContext.ActionDescriptor.ControllerDescriptor.ControllerName;
-                    //nếu tên controler không có trong mảng quyền của user thì trả về trang đăng nhập
-                    if (!listpermission.Contains(ControllerName))
-                    {
-                        filterContext.Result = new RedirectResult("~/Shipper/Shipper/Login");
-                    }
+            //        //Lấy tên Controller
+            //        string ControllerName = filterContext.ActionDescriptor.ControllerDescriptor.ControllerName;
+            //        //nếu tên controler không có trong mảng quyền của user thì trả về trang đăng nhập
+            //        if (!listpermission.Contains(ControllerName))
+            //        {
+            //            filterContext.Result = new RedirectResult("~/Shipper/Shipper/Login");
+            //        }
 
 
-                }
-            }
+            //    }
+            //}
         }
     }
 }
